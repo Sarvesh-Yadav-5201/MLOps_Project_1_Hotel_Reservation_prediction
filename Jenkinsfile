@@ -3,7 +3,12 @@
 pipeline {
     agent any
 
+    environment {
+        VENV_DIR = 'venv'
+    }
+
     stages{
+
         stage('Cloning Github repo to Jenkins'){
 
             steps {
@@ -12,6 +17,25 @@ pipeline {
 
                 // Cloning the repository
                 checkout scmGit(branches: [[name: '*/main']], extensions: [], userRemoteConfigs: [[credentialsId: 'github_token', url: 'https://github.com/Sarvesh-Yadav-5201/MLOps_Project_1_Hotel_Reservation_prediction.git']])
+            }
+        }
+
+        stage('Setting up Virtual Environment and installing dependencies'){
+
+            steps {
+
+                echo 'Setting up Virtual Environment and installing dependencies'
+
+                sh '''
+
+                python -m venv ${VENV_DIR}
+                . ${VENV_DIR}/bin/activate
+                pip install --upgrade pip
+                pip install -e .
+                
+
+                '''
+                
             }
         }
     }
