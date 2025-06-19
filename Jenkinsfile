@@ -13,10 +13,12 @@ pipeline {
         // Stage 1: Cloning the GitHub repository
         stage('Cloning Github repo to Jenkins') {
             steps {
+                script{
                 echo 'Cloning repository from GitHub to Jenkins workspace' // Log message for cloning step
 
                 // Cloning the repository from GitHub using the specified branch and credentials
                 checkout scmGit(branches: [[name: '*/main']], extensions: [], userRemoteConfigs: [[credentialsId: 'github_token', url: 'https://github.com/Sarvesh-Yadav-5201/MLOps_Project_1_Hotel_Reservation_prediction.git']])
+                }
             }
         }
 

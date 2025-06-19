@@ -10,7 +10,7 @@ TRAIN_FILE_PATH = os.path.join(RAW_DIR, "train.csv")
 TEST_FILE_PATH = os.path.join(RAW_DIR, "test.csv")
 
 ## CONFIIG DATA
-CONFIG_PATH = "config\config.yaml"
+CONFIG_PATH = "config/config.yaml"
 
 
 ##...........DATA PROCESSING......................##
