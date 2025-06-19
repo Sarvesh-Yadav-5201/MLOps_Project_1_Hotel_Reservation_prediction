@@ -13,12 +13,12 @@ pipeline {
 
                 echo 'Cloning repository from GitHub to Jenkins workspace'
                 // Cloning the repository
-                checkout scmGit(branches: [[name: '*/main']], extensions: [], userRemoteConfigs: [[credentialsId: 'github_token', url: 'https://github.com/Sarvesh-Yadav-5201/MLOps_Projects.git']])
+                checkout scmGit(branches: [[name: '*/main']], extensions: [], userRemoteConfigs: [[credentialsId: 'github_token', url: 'https://github.com/Sarvesh-Yadav-5201/MLOps_Project_1_Hotel_Reservation_prediction.git']])
             }
         }
 
     stages{
-        stage('Setting up the Virtual Environment and installing dependencies'){     
+        stage('Setting up the Virtual Environment and installing dependencies'){   
             steps {
 
                 echo 'Setting up the Virtual Environment and installing dependencies'
