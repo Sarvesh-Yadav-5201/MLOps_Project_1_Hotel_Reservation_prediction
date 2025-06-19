@@ -60,5 +60,30 @@ pipeline {
                 }
             }
         }
+
+        // Stage 4: Deploying the application to Google Cloud Run
+        stage('Deploying code to Google Cloud Run') {
+            steps {
+                // Using credentials to authenticate with GCP
+                withCredentials([file(credentialsId: 'gcp-key', variable: 'GOOGLE_APPLICATION_CREDENTIALS')]) {
+                    script {
+                        echo 'Deplying code to Google Cloud Run' // Log message for Docker build and push step
+
+                        // Shell commands to authenticate with GCP, set the project, and deploy the application to Google Cloud Run
+                        sh '''
+                        export PATH=$PATH:${GCLOUD_PATH}
+                        gcloud auth activate-service-account --key-file=${GOOGLE_APPLICATION_CREDENTIALS}
+                        gcloud config set project ${GCP_PROJECT}
+                        
+                        gcloud run deploy hotel-reservation-prediction \
+                            --image=gcr.io/${GCP_PROJECT}/hotel-reservation-prediction:latest \
+                            --platform=managed \
+                            --region=us-central1 \
+                            --allow-unauthenticated
+                        '''
+                    }
+                }
+            }
+        }
     }
 }
