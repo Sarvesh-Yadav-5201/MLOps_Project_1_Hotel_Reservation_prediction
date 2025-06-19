@@ -4,11 +4,11 @@ from scipy.stats import randint, uniform
 
 # Model parameters for LightGBM
 LIGHTGBM_PARAMS = {
-    'n_estimators': randint(100 , 500),             # Number of boosting iterations
-    'max_depth': randint(5, 25),                    # Maximum depth of the tree
-    'learning_rate': uniform(0.01, 0.1),            # Learning rate
-    'num_leaves': randint(20, 100),                 # Number of leaves in one tree
-    'boosting_type': ['gbdt', 'dart', 'goss'],      # Boosting type
+    'n_estimators':314,             # Number of boosting iterations
+    'max_depth': 23,                    # Maximum depth of the tree
+    'learning_rate': 0.069,            # Learning rate
+    'num_leaves': 94,                 # Number of leaves in one tree
+    'boosting_type': ['gbdt'],      # Boosting type
 }
 
 

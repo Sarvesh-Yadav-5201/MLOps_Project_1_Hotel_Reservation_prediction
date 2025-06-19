@@ -64,33 +64,26 @@ class ModelTraining:
         try:
             logger.info("Initializing LightGBM model training...")
 
-            # Initialize the LightGBM classifier
-            model = LGBMClassifier(random_state=self.random_search_params['random_state'])
+            # Initialize the LightGBM classifier with specified parameters
+            model = LGBMClassifier(**self.lightgbm_params)
 
-            logger.info("Starting Randomized Search CV for hyperparameter tuning...")
-
-            # Perform Randomized Search CV for hyperparameter tuning
-            random_search = RandomizedSearchCV(
-                estimator= model,
-                param_distributions=self.lightgbm_params,
-                **self.random_search_params
-            )
+            logger.info("Starting model training with specified LightGBM parameters...")
 
             # Fit the model
-            random_search.fit(X_train, y_train)
+            model.fit(X_train, y_train)
 
             logger.info("Hyperparameter tuning completed successfully")
 
-            # Get the best parameters: 
-            best_params = random_search.best_params_
-            logger.info(f"Best parameters found: {best_params}")
+            # # Get the best parameters: 
+            # best_params = random_search.best_params_
+            # logger.info(f"Best parameters found: {best_params}")
 
-            # Get best model:
-            best_model = random_search.best_estimator_
-            logger.info("Best model obtained from Randomized Search CV.")
+            # # Get best model:
+            # best_model = random_search.best_estimator_
+            # logger.info("Best model obtained from Randomized Search CV.")
             logger.info("Model training completed successfully.")
 
-            return best_model
+            return model
 
         except Exception as e:
             logger.error(f"Error occurred during model training: {e}")
