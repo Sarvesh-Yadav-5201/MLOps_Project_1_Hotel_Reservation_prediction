@@ -6,3 +6,4 @@ logs/
 mlops_hotel_1.egg-info/
 token
 notebook/random_forest_model.pkl
+0_resource_file/
