@@ -1,9 +1,13 @@
 pandas
 numpy
 google-cloud-storage
+seaborn
+matplotlib
+scipy
 scikit-learn
 pyyaml
 imbalanced-learn
 lightgbm
 mlflow
 flask
+statsmodels

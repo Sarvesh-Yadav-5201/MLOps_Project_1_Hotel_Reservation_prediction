@@ -1,9 +1,8 @@
 venv/
 mlruns/
-# Ignore Python cache files
 __pycache__/
-# Ignore Jupyter Notebook checkpoints
 .ipynb_checkpoints/
 logs/
 mlops_hotel_1.egg-info/
 token
+notebook/random_forest_model.pkl
